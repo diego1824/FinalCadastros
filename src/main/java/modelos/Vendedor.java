@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @SuppressWarnings("unused")
 @Entity
 public class Vendedor implements Serializable {
@@ -20,9 +22,10 @@ public class Vendedor implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long codigo;
+	private int codigo;
 	private String nome;
 
+	@JsonIgnore
 	@OneToMany(mappedBy="vendedor")
 	private List<Pedido> pedidos = new ArrayList<Pedido>();
 
@@ -34,7 +37,7 @@ public class Vendedor implements Serializable {
 		this.pedidos = pedidos;
 	}
 
-	public Vendedor(long codigo, String nome) {
+	public Vendedor(int codigo, String nome) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
@@ -47,7 +50,7 @@ public class Vendedor implements Serializable {
 		return codigo;
 	}
 
-	public void setCodigo(long codigo) {
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
 

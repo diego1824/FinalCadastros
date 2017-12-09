@@ -50,5 +50,12 @@ public class ClienteServico extends Servico {
 		em.getTransaction().commit();
 		em.close();
 	}
+	
+	public Cliente encontrar(Integer id){
+		EntityManager em = emf.createEntityManager();
+		Cliente cli = em.find(Cliente.class, id);
+		em.close();
+		return cli;
+	}
 
 }

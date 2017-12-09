@@ -50,4 +50,11 @@ public class VendedorServico extends Servico {
 		em.getTransaction().commit();
 		em.close();
 	}
+
+	public Vendedor encontrar(Integer id) {
+		EntityManager em = emf.createEntityManager();
+		Vendedor vend = em.find(Vendedor.class, id);
+		em.close();
+		return vend;
+	}
 }

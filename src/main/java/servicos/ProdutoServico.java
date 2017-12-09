@@ -51,4 +51,11 @@ public class ProdutoServico extends Servico {
 		em.close();
 	}
 
+	public Produto encontrar(Integer id) {
+		EntityManager em = emf.createEntityManager();
+		Produto prod = em.find(Produto.class, id);
+		em.close();
+		return prod;
+	}
+
 }

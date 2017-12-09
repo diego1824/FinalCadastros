@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Cliente implements Serializable{
 
@@ -19,6 +21,8 @@ public class Cliente implements Serializable{
 	private int codigo;
 	private String nome;
 	private String endereco;
+	
+	@JsonIgnore
 	@OneToMany(mappedBy="cliente")
 	private List<Pedido> pedidos = new ArrayList<Pedido>();
 	

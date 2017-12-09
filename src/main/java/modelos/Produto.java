@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @SuppressWarnings("unused")
 @Entity
 public class Produto implements Serializable{
@@ -20,10 +22,11 @@ public class Produto implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long codigo;
+	private int codigo;
 	private String descricao;
 	private double valor;
 	
+	@JsonIgnore
 	@ManyToMany
 	private List<Pedido> pedidos = new ArrayList<Pedido>();
 	
@@ -36,7 +39,7 @@ public class Produto implements Serializable{
 	public long getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(long codigo) {
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
 	public String getDescricao() {
